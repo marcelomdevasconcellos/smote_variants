@@ -19775,7 +19775,7 @@ class Evaluation():
             results['log_loss'] = log_loss(all_test, all_pred)
             results['auc'] = roc_auc_score(all_test, all_pred, multi_class='ovo')
             aucs = [roc_auc_score(all_test[all_folds == i],
-                                  all_pred[all_folds == i, 1])
+                                  all_pred[all_folds == i, 1], multi_class='ovo')
                     for i in range(np.max(all_folds)+1)]
             results['auc_mean'] = np.mean(aucs)
             results['auc_std'] = np.std(aucs)

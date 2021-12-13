@@ -19773,7 +19773,7 @@ class Evaluation():
             results['informedness'] = results['sens'] + results['spec'] - 1.0
             results['markedness'] = results['ppv'] + results['npv'] - 1.0
             results['log_loss'] = log_loss(all_test, all_pred)
-            results['auc'] = roc_auc_score(all_test, all_pred[:, 1])
+            results['auc'] = roc_auc_score(all_test, all_pred[:, 1], multi_class='ovo')
             aucs = [roc_auc_score(all_test[all_folds == i],
                                   all_pred[all_folds == i, 1])
                     for i in range(np.max(all_folds)+1)]
